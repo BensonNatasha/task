@@ -1,3 +1,5 @@
+import { TaskService } from './../shared/task.service';
+import { Task } from './../shared/task';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-list.page.scss'],
 })
 export class TaskListPage implements OnInit {
+  tasks: Task[] = [];
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+    this.tasks = this.taskService.getAll();
   }
 
 }
